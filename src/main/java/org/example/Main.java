@@ -5,49 +5,40 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int M;
-        int N;
-        System.out.println("Enter M: ");
-        M = scanner.nextInt();
-        System.out.println("Enter N: ");
-        N = scanner.nextInt();
+        int n;
+        int m;
+        System.out.println("Enter n: ");
+        n = scanner.nextInt();
+        System.out.println("Enter m: ");
+        m = scanner.nextInt();
+        int[][] a = new int[n][];
+        int[][] b = new int[m][];
+        for (int i = 0; i < b.length; i++)b[i] = new int [n];
 
-        int [][] matrix = new int [M][N];
-
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
-                matrix[i][j] = N * i + j;
-            }
-
-        }
-
-        System.out.println("Початкова матриця");
-        System.out.println("      ");
-        for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < M; ++j) {
-                System.out.printf("%4d", matrix[i][j]);
+        System.out.println( "Початкова матриця: ");
+        for (int i = 0; i < a.length; i++){
+            a[i] = new int [m];
+            for (int j = 0; j < a[i].length; j++) {
+                a[i][j] = m*i + j;
+                System.out.print(a[i][j]+ "   ");
             }
             System.out.println();
         }
 
-        for (int i = 0; i < M; i++) {
-            for (int j = i+1; j < M; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                b[i][j] = a[j][i];
             }
         }
-
-        System.out.println();
-        System.out.println("Транспонована матриця");
-        System.out.println("       ");
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < M; j++) {
-                System.out.printf("%3d", matrix[i][j]);
+        System.out.println("Транспонована матриця: ");
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                System.out.print(b[i][j] + "   ");
             }
             System.out.println();
         }
+
+
+
     }
 }
-
-
